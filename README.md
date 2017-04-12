@@ -7,5 +7,5 @@ The cart header is contained in [header.z80](header.z80), and [macros.inc](macro
 
 How to compile and run
 ----------------------
-`run.bat` builds and runs the ROM image (example.bg) on Windows using
+`run.bat` builds and runs the ROM image (example.gb) on Windows using
 [Rednex GameBoy Development System](https://github.com/rednex/rgbds) and [BGB Gameboy Emulator](http://bgb.bircd.org/).
