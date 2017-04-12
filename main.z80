@@ -10,55 +10,47 @@ main:
   ld A, %00000000
   ld [$FF40], A
 
-  ; Reset sprite color palette to default
+  ; Reset background color palette to default
   ld A, %11100100
-  ld [$FF48], A
+  ld [$FF47], A
 
-  ; Load 16 bytes of sprite tile data to VRAM
+  ; Load 16 bytes of tile data to VRAM
   ld D, 16
-  ld BC, sprite_data
+  ld BC, tile_data
   ld HL, $8000
 .load_loop:
   ld A, [BC]
   inc BC
-  ld [HL], A
-  inc HL
+  ldi [HL], A
   dec D
   jr nz, .load_loop
 
-  ; Clear sprite attribute memory
-  ld HL, $FE00
-.clear_loop:
+  ; Set whole tilemap to point to tile 0
+  ld HL, $9800
+  ld B, 0
+.tile_map_loop:
   ld A, 0
-  ld [HL], A
-  inc L
-  ld A, L
-  cp $A0
-  jr nz, .clear_loop
+  ldi [HL], A
+  ldi [HL], A
+  inc B
+  ld A, B
+  cp 180
+  jr nz, .tile_map_loop
 
-  ; Add sprite data entry to sprite attribute memory
-  ld A, 80
-  ld [$FE00], A
-  ld A, 84
-  ld [$FE01], A
-  ld A, 0
-  ld [$FE02], A
-  ld [$FE03], A
-
-  ; Enable LCD and sprites
-  ld A, %10000010
+  ; Enable LCD and background
+  ld A, %10010001
   ld [$FF40], A
 
 .loop:
   halt
   jr .loop
 
-sprite_data:
-  DW `00111100
-  DW `11111111
-  DW `13311331
-  DW `11111111
-  DW `13111131
-  DW `11333311
-  DW `11111111
-  DW `00111100
+tile_data:
+  DW `01111100
+  DW `11111110
+  DW `11313110
+  DW `11111110
+  DW `13111310
+  DW `11333110
+  DW `01111100
+  DW `00000000
