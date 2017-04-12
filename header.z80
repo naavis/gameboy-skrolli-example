@@ -1,4 +1,4 @@
-INCLUDE "Hardware.inc"
+INCLUDE "macros.inc"
 
 Section "CartHeader",HOME[$104]
   NINTENDO_LOGO ; $0104 - $0133: The Nintendo Logo.

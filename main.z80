@@ -1,4 +1,3 @@
-INCLUDE "Hardware.inc"
 INCLUDE "macros.inc"
 
 Section "Initializer",HOME[$100]
@@ -15,7 +14,7 @@ main:
   ld A, %11100100
   ld [$FF48], A
 
-  ; Load sprite tile data to VRAM
+  ; Load 16 bytes of sprite tile data to VRAM
   ld D, 16
   ld BC, sprite_data
   ld HL, $8000
