@@ -26,7 +26,7 @@ main:
   dec D
   jr nz, .load_loop
 
-  ; Clear OAM memory
+  ; Clear sprite attribute memory
   ld HL, $FE00
 .clear_loop:
   ld A, 0
@@ -36,7 +36,7 @@ main:
   cp $A0
   jr nz, .clear_loop
 
-  ; Add sprite data entry to OAM
+  ; Add sprite data entry to sprite attribute memory
   ld A, 80
   ld [$FE00], A
   ld A, 84
