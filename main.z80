@@ -27,14 +27,12 @@ main:
 
   ; Set whole tilemap to point to tile 0
   ld HL, $9800
-  ld B, 0
+  ld B, 180
 .tile_map_loop:
   ld A, 0
   ldi [HL], A
   ldi [HL], A
-  inc B
-  ld A, B
-  cp 180
+  dec B
   jr nz, .tile_map_loop
 
   ; Enable LCD and background
