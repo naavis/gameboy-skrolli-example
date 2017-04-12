@@ -1,6 +1,6 @@
 INCLUDE "macros.inc"
 
-Section "CartHeader",HOME[$104]
+Section "Cart Header",HOME[$104]
   NINTENDO_LOGO ; $0104 - $0133: The Nintendo Logo.
   DB "SKROLLI        " ; $0134 - $0142: Cart title
   DB $00 ; $0143: CGB Compatibility flag
