@@ -44,6 +44,12 @@ main:
   halt
   jr .loop
 
+; The ` operator converts this tile data
+; to Game Boy compatible tile format.
+; E.g. DW `00000123 equals DB %00000101, %00000011
+; where the first byte contains the least significant bits
+; and the second byte the most significant bits of the
+; uppermost line of the tile.
 tile_data:
   DW `01111100
   DW `11111110
