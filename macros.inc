@@ -12,7 +12,7 @@ WaitVBL: MACRO
   and 3
   cp 1
   jr nz, .waitvbl\@
- ENDM
+ENDM
 
 WaitVBlankStart: MACRO
   WaitNVBL

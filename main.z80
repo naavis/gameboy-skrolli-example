@@ -6,6 +6,7 @@ Section "Initializer",HOME[$100]
 Section "Main Code",HOME[$150]
 main:
   ; Disable whole LCD
+  ; Disabling LCD outside V-blank could damage hardware!
   WaitVBlankStart ; Wait for V-blank
   ld A, %00000000
   ld [$FF40], A
